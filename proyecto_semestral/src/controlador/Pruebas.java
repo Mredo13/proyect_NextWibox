@@ -11,7 +11,8 @@ import modelo.Fecha;
 import modelo.Usuario;
 
 
-public class NewClass {
+public class Pruebas {
+    /*
     public static void main(String[]args){
         
         Fecha f = new Fecha();
@@ -32,5 +33,5 @@ public class NewClass {
         //Usuario u = new Usuario("20.574.150-K", "Thomas Quiroga", "Direccion", "correo@gmail.com", d, "comuna", "+56 9 8888 8888");
         //conexion.agregar_usuario_BD(u);
     }
-    
+    */
 }

@@ -6,11 +6,11 @@ package vista;
 
 
 import bd.Conexion;
+import controlador.Sistema_impl;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
-import modelo.Vendedor;
 
 /**
  *
@@ -21,7 +21,7 @@ public class Visualizador extends javax.swing.JFrame {
     /**
      * Creates new form Visualizador1
      */
-    //public static Impl_prueba sistema = new Impl_prueba();
+    public static Sistema_impl sistema = new Sistema_impl();
     Conexion base_de_datos = new Conexion();
     public Visualizador() {
         initComponents();
@@ -59,7 +59,7 @@ public class Visualizador extends javax.swing.JFrame {
 
         header = new javax.swing.JPanel();
         cerrar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        cerrar_text = new javax.swing.JLabel();
         diseño = new javax.swing.JPanel();
         contenido = new javax.swing.JPanel();
 
@@ -74,19 +74,19 @@ public class Visualizador extends javax.swing.JFrame {
 
         cerrar.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("X");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cerrar_text.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        cerrar_text.setForeground(new java.awt.Color(255, 255, 255));
+        cerrar_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cerrar_text.setText("X");
+        cerrar_text.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                cerrar_textMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel1MouseEntered(evt);
+                cerrar_textMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel1MouseExited(evt);
+                cerrar_textMouseExited(evt);
             }
         });
 
@@ -94,12 +94,12 @@ public class Visualizador extends javax.swing.JFrame {
         cerrar.setLayout(cerrarLayout);
         cerrarLayout.setHorizontalGroup(
             cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(cerrar_text, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
         cerrarLayout.setVerticalGroup(
             cerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cerrarLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cerrar_text, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
@@ -136,17 +136,17 @@ public class Visualizador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void cerrar_textMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_textMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_cerrar_textMouseClicked
 
-    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+    private void cerrar_textMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_textMouseEntered
         cerrar.setBackground(Color.red);
-    }//GEN-LAST:event_jLabel1MouseEntered
+    }//GEN-LAST:event_cerrar_textMouseEntered
 
-    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+    private void cerrar_textMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrar_textMouseExited
         cerrar.setBackground(Color.black);
-    }//GEN-LAST:event_jLabel1MouseExited
+    }//GEN-LAST:event_cerrar_textMouseExited
     
     
     
@@ -186,9 +186,9 @@ public class Visualizador extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel cerrar;
+    private javax.swing.JLabel cerrar_text;
     private javax.swing.JPanel contenido;
     private javax.swing.JPanel diseño;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
 package vista;
 
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 
 
 
@@ -29,118 +30,78 @@ public class Login extends javax.swing.JPanel {
     private void initComponents() {
 
         login = new javax.swing.JPanel();
-        jLabel_Titulo1 = new javax.swing.JLabel();
-        jLabel_usuario1 = new javax.swing.JLabel();
-        jTextField_usuario1 = new javax.swing.JTextField();
-        jSeparator_usuario1 = new javax.swing.JSeparator();
-        jLabel_contraseña1 = new javax.swing.JLabel();
-        jPasswordField_contraseña1 = new javax.swing.JPasswordField();
-        jSeparator_contraseña1 = new javax.swing.JSeparator();
-        jPanel_entrar1 = new javax.swing.JPanel();
-        jLabel_Acceder1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        titulo_texto = new javax.swing.JLabel();
+        usuario_texto = new javax.swing.JLabel();
+        usuario_input = new javax.swing.JTextField();
+        usuario_separador = new javax.swing.JSeparator();
+        contraseña_texto = new javax.swing.JLabel();
+        contraseña_input = new javax.swing.JPasswordField();
+        contraseña_separador = new javax.swing.JSeparator();
+        acceder_boton = new javax.swing.JLabel();
+        infoAdmin_boton = new javax.swing.JButton();
+        infoVendedor_boton = new javax.swing.JButton();
 
         login.setBackground(new java.awt.Color(51, 51, 51));
         login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_Titulo1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_Titulo1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_Titulo1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Titulo1.setText("INICIAR SESIÓN");
-        login.add(jLabel_Titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 102, -1, -1));
+        titulo_texto.setBackground(new java.awt.Color(255, 255, 255));
+        titulo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titulo_texto.setForeground(new java.awt.Color(255, 255, 255));
+        titulo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_texto.setText("INICIAR SESIÓN");
+        login.add(titulo_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(221, 102, -1, -1));
 
-        jLabel_usuario1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_usuario1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel_usuario1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_usuario1.setText("USUARIO");
-        login.add(jLabel_usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 145, -1, -1));
+        usuario_texto.setBackground(new java.awt.Color(255, 255, 255));
+        usuario_texto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        usuario_texto.setForeground(new java.awt.Color(255, 255, 255));
+        usuario_texto.setText("USUARIO");
+        login.add(usuario_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 145, -1, -1));
 
-        jTextField_usuario1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField_usuario1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField_usuario1.setBorder(null);
-        jTextField_usuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+        usuario_input.setBackground(new java.awt.Color(51, 51, 51));
+        usuario_input.setForeground(new java.awt.Color(102, 102, 102));
+        usuario_input.setBorder(null);
+        login.add(usuario_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 270, 20));
+        login.add(usuario_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 270, 10));
+
+        contraseña_texto.setBackground(new java.awt.Color(51, 51, 51));
+        contraseña_texto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        contraseña_texto.setForeground(new java.awt.Color(255, 255, 255));
+        contraseña_texto.setText("CONTRASEÑA");
+        login.add(contraseña_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 203, -1, -1));
+
+        contraseña_input.setBackground(new java.awt.Color(51, 51, 51));
+        contraseña_input.setForeground(new java.awt.Color(102, 102, 102));
+        contraseña_input.setBorder(null);
+        login.add(contraseña_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 229, 270, -1));
+        login.add(contraseña_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 245, 270, 10));
+
+        acceder_boton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        acceder_boton.setForeground(new java.awt.Color(255, 255, 255));
+        acceder_boton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        acceder_boton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acceder.png"))); // NOI18N
+        acceder_boton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 51), 0));
+        acceder_boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField_usuario1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jTextField_usuario1MouseEntered(evt);
+                acceder_botonMouseClicked(evt);
             }
         });
-        jTextField_usuario1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField_usuario1KeyPressed(evt);
-            }
-        });
-        login.add(jTextField_usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 270, 20));
-        login.add(jSeparator_usuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 270, 10));
+        login.add(acceder_boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 150, 50));
 
-        jLabel_contraseña1.setBackground(new java.awt.Color(51, 51, 51));
-        jLabel_contraseña1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel_contraseña1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_contraseña1.setText("CONTRASEÑA");
-        login.add(jLabel_contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 203, -1, -1));
-
-        jPasswordField_contraseña1.setBackground(new java.awt.Color(51, 51, 51));
-        jPasswordField_contraseña1.setForeground(new java.awt.Color(102, 102, 102));
-        jPasswordField_contraseña1.setText("************");
-        jPasswordField_contraseña1.setBorder(null);
-        jPasswordField_contraseña1.addMouseListener(new java.awt.event.MouseAdapter() {
+        infoAdmin_boton.setText("Admin");
+        infoAdmin_boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField_contraseña1MouseClicked(evt);
+                infoAdmin_botonMouseClicked(evt);
             }
         });
-        jPasswordField_contraseña1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField_contraseña1ActionPerformed(evt);
-            }
-        });
-        jPasswordField_contraseña1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordField_contraseña1KeyPressed(evt);
-            }
-        });
-        login.add(jPasswordField_contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 229, 270, -1));
-        login.add(jSeparator_contraseña1, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 245, 270, 10));
+        login.add(infoAdmin_boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
-        jPanel_entrar1.setBackground(new java.awt.Color(0, 153, 153));
-
-        jLabel_Acceder1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_Acceder1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Acceder1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Acceder1.setText("Acceder");
-        jLabel_Acceder1.addMouseListener(new java.awt.event.MouseAdapter() {
+        infoVendedor_boton.setText("Vendedor");
+        infoVendedor_boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_Acceder1MouseClicked(evt);
+                infoVendedor_botonMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel_entrar1Layout = new javax.swing.GroupLayout(jPanel_entrar1);
-        jPanel_entrar1.setLayout(jPanel_entrar1Layout);
-        jPanel_entrar1Layout.setHorizontalGroup(
-            jPanel_entrar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel_Acceder1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        jPanel_entrar1Layout.setVerticalGroup(
-            jPanel_entrar1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel_Acceder1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-        );
-
-        login.add(jPanel_entrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 261, -1, -1));
-
-        jButton1.setText("ADMIN");
-        jButton1.setBorder(null);
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        login.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 70, -1));
+        login.add(infoVendedor_boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -157,47 +118,7 @@ public class Login extends javax.swing.JPanel {
                 .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField_usuario1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_usuario1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_usuario1MouseClicked
-
-    private void jTextField_usuario1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_usuario1MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_usuario1MouseEntered
-
-    private void jTextField_usuario1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_usuario1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_usuario1KeyPressed
-
-    private void jPasswordField_contraseña1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField_contraseña1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField_contraseña1MouseClicked
-
-    private void jPasswordField_contraseña1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField_contraseña1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField_contraseña1ActionPerformed
-
-    private void jPasswordField_contraseña1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField_contraseña1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField_contraseña1KeyPressed
-
-    private void jLabel_Acceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_Acceder1MouseClicked
-
-        /*
-        Menu_vendedor menu_admin = new Menu_vendedor();
-        menu_admin.setSize(660, 460);
-        menu_admin.setLocation(0,0);
-
-        login.removeAll();
-        login.add(menu_admin,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
-        login.revalidate();
-        login.repaint();
-        */
-    }//GEN-LAST:event_jLabel_Acceder1MouseClicked
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        /*
+    private void abrir_menu_admin(){
         Menu_administrador menu = new Menu_administrador();
         menu.setSize(660, 460);
         menu.setLocation(0,0);
@@ -206,25 +127,64 @@ public class Login extends javax.swing.JPanel {
         login.add(menu,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
         login.revalidate();
         login.repaint();
-        */
-    }//GEN-LAST:event_jButton1MouseClicked
+    }
+    private void abrir_menu_vendedor(){
+        Menu_vendedor menu_admin = new Menu_vendedor();
+        menu_admin.setSize(660, 460);
+        menu_admin.setLocation(0,0);
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        login.removeAll();
+        login.add(menu_admin,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
+        login.revalidate();
+        login.repaint();
+    }
+    private void acceder_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceder_botonMouseClicked
+        String usuario = usuario_input.getText();
+        String contraseña = contraseña_input.getText();
+        if(usuario.equals("adm") && contraseña.equals("admin")){
+            abrir_menu_admin();
+        }else{
+            if(usuario.isBlank()){
+                JOptionPane.showMessageDialog(null,"Ingrese un usuario");
+            }else if(contraseña.isBlank()){
+                JOptionPane.showMessageDialog(null,"Ingrese una contraseña");
+            }else if(usuario.contains(" ")){
+                JOptionPane.showMessageDialog(null,"El usuario no debe contener espacios");
+            }else{
+                try{
+                    boolean existeUsuario = Visualizador.sistema.login(usuario, contraseña);
+                    if(existeUsuario){
+                        abrir_menu_vendedor();
+                    }else{
+                        JOptionPane.showMessageDialog(null,"El usuario no existe en el sistema");
+                    }
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,e.getMessage());
+                }   
+            }
+        }
+    }//GEN-LAST:event_acceder_botonMouseClicked
+
+    private void infoAdmin_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoAdmin_botonMouseClicked
+        JOptionPane.showMessageDialog(null,"Menu admin\n---> Usuario: adm\n---> Contraseña:admin");
+    }//GEN-LAST:event_infoAdmin_botonMouseClicked
+
+    private void infoVendedor_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoVendedor_botonMouseClicked
+        JOptionPane.showMessageDialog(null,"Menu vendedor\n---> Usuario: correo\n---> Contraseña:rut(sin puntos ni guion)");
+    }//GEN-LAST:event_infoVendedor_botonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel_Acceder1;
-    private javax.swing.JLabel jLabel_Titulo1;
-    private javax.swing.JLabel jLabel_contraseña1;
-    private javax.swing.JLabel jLabel_usuario1;
-    private javax.swing.JPanel jPanel_entrar1;
-    private javax.swing.JPasswordField jPasswordField_contraseña1;
-    private javax.swing.JSeparator jSeparator_contraseña1;
-    private javax.swing.JSeparator jSeparator_usuario1;
-    private javax.swing.JTextField jTextField_usuario1;
+    private javax.swing.JLabel acceder_boton;
+    private javax.swing.JPasswordField contraseña_input;
+    private javax.swing.JSeparator contraseña_separador;
+    private javax.swing.JLabel contraseña_texto;
+    private javax.swing.JButton infoAdmin_boton;
+    private javax.swing.JButton infoVendedor_boton;
     private javax.swing.JPanel login;
+    private javax.swing.JLabel titulo_texto;
+    private javax.swing.JTextField usuario_input;
+    private javax.swing.JSeparator usuario_separador;
+    private javax.swing.JLabel usuario_texto;
     // End of variables declaration//GEN-END:variables
 }
