@@ -53,7 +53,10 @@ public class Conexion {
     }
     public void crear_tablas(){
         crear_tabla_usuario();
-        crear_tabla_vendedor();          
+        crear_tabla_vendedor();
+        crear_tabla_desarrollador();
+        crear_tabla_videojuego();
+        crear_tabla_arriendo();
     }
     
     private void crear_tabla_usuario(){
@@ -79,6 +82,15 @@ public class Conexion {
         }catch(Exception e){
            System.out.println("Error al crear la tabla vendedor, o ya existia"); 
         }
+    }
+    private void crear_tabla_desarrollador(){
+        
+    }
+    private void crear_tabla_videojuego(){
+        
+    }
+    private void crear_tabla_arriendo(){
+        
     }
     public boolean agregar_usuario_BD(Usuario usuario){
         try {
