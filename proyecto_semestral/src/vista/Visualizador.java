@@ -27,18 +27,19 @@ public class Visualizador extends javax.swing.JFrame {
     public Visualizador() {
         initComponents();
         this.setLocationRelativeTo(null);//hace que la pestaña se vea al centro
-        
         cargar_login();
         base_de_datos.conectar();
+        
         if(base_de_datos.isConected()){
             JOptionPane.showMessageDialog(null, "Conectado a la base de datos", "Funcionamiento Aplicación", 1);
             base_de_datos.crear_tablas();
-            base_de_datos.borrar_tablas();
+            //base_de_datos.borrar_tablas();
         }else{
             JOptionPane.showMessageDialog(null, "Modo sin conexión", "Funcionamiento Aplicación", 1);
             sistema.ingresarDatosPrueba();
             JOptionPane.showMessageDialog(null, sistema.como_entrar_menu_vendedor(), "Funcionamiento Aplicación", 1);
         }     
+        System.out.println(base_de_datos.isConected());
     }
     private void cargar_login(){
         Login login = new Login();

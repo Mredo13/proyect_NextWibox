@@ -168,7 +168,7 @@ public class Menu_administrador extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+            .addComponent(menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,17 +237,18 @@ public class Menu_administrador extends javax.swing.JPanel {
 
     private void actualizar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_buttonMouseClicked
         int fila = jTable1.getSelectedRow();
+        System.out.println("fila");
         if(fila != -1){
             String tipo = model.getValueAt(fila, 0)+"";
             String dato = model.getValueAt(fila, 1)+"";
             if(tipo.equalsIgnoreCase("usuario")){
-                Visualizador.sistema.eliminar_usuario(dato);
+                    Visualizador.sistema.eliminar_usuario(dato);      
             }else if(tipo.equalsIgnoreCase("vendedor")){
-                Visualizador.sistema.eliminar_vendedor(dato);
+                    Visualizador.sistema.eliminar_vendedor(dato);          
             }else if(tipo.equalsIgnoreCase("desarrollador")){
-                Visualizador.sistema.eliminar_desarrollador(dato);
+                    Visualizador.sistema.eliminar_desarrollador(dato);
             }else{
-                Visualizador.sistema.eliminar_videojuego(dato);
+                    Visualizador.sistema.eliminar_videojuego(dato);
             }
             model.removeRow(fila);
             JOptionPane.showMessageDialog(null, tipo+" eliminado", "Validación", 1);

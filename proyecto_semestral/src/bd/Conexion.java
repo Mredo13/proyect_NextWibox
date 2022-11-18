@@ -11,8 +11,9 @@ import modelo.Vendedor;
         
 public class Conexion {
     Connection connection = null;
+    boolean conectado = false;
     public boolean isConected(){
-        return  connection != null;
+        return conectado;
     }
     public void conectar (){
         try {
@@ -26,6 +27,7 @@ public class Conexion {
         String password = "";    
         connection = DriverManager.getConnection(url, user, password);
         System.out.println("Concxion correcta");
+        conectado = true;
             
         } catch (Exception e) {
             System.out.println("No se pudo conectar a la base de datos");

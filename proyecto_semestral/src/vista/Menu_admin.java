@@ -4,17 +4,21 @@
  */
 package vista;
 
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author thoma
  */
 public class Menu_admin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu_admin
-     */
+    private DefaultTableModel model;
     public Menu_admin() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        model = tabla;
     }
 
     /**
@@ -34,9 +38,10 @@ public class Menu_admin extends javax.swing.JFrame {
         buscar_botton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         barraTareas_menu = new javax.swing.JMenuBar();
         personas_menu = new javax.swing.JMenu();
-        todas_menu = new javax.swing.JMenuItem();
         usuarios_menu = new javax.swing.JMenuItem();
         vendedores_menu = new javax.swing.JMenuItem();
         desarrolladores_menu = new javax.swing.JMenuItem();
@@ -72,16 +77,14 @@ public class Menu_admin extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Vendedor", "1", "pepe", "tu vieja", "a"},
-                {"Usuario", "2", "alf", "tu hermana", "b"},
-                {"Desarrollador", "3", "adan", "tu abuela", "c"}
+
             },
             new String [] {
-                "Tipo", "Rut", "Nombre", "Direccion", "Correo"
+                "Rut", "Nombre", "Direccion", "Correo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -92,12 +95,20 @@ public class Menu_admin extends javax.swing.JFrame {
 
         menu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, 180));
 
+        jButton1.setText("jButton1");
+        menu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
+
+        jButton2.setText("jButton2");
+        menu.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
+
         personas_menu.setText("Personas");
 
-        todas_menu.setText("Todas");
-        personas_menu.add(todas_menu);
-
         usuarios_menu.setText("Usuarios");
+        usuarios_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarios_menuActionPerformed(evt);
+            }
+        });
         personas_menu.add(usuarios_menu);
 
         vendedores_menu.setText("Vendedor");
@@ -127,12 +138,21 @@ public class Menu_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void usuarios_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarios_menuActionPerformed
+        List <String[]> matriz = Visualizador.sistema.obtenerUsuarios();
+        for(int i = 0;i<matriz.size();i++){
+            model.addRow(matriz.get(i));
+        }
+    }//GEN-LAST:event_usuarios_menuActionPerformed
+    
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraTareas_menu;
     private javax.swing.JButton buscar_botton;
     private javax.swing.JMenuItem desarrolladores_menu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel menu;
@@ -141,7 +161,6 @@ public class Menu_admin extends javax.swing.JFrame {
     private javax.swing.JSeparator rut_separador;
     private javax.swing.JLabel rut_texto;
     private javax.swing.JLabel titulo_texto;
-    private javax.swing.JMenuItem todas_menu;
     private javax.swing.JMenuItem usuarios_menu;
     private javax.swing.JMenuItem vendedores_menu;
     private javax.swing.JMenu videojuegos_menu;

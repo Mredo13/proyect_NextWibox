@@ -119,16 +119,16 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     private void abrir_menu_admin(){
-        Menu_administrador menu = new Menu_administrador();
+        /*Menu_administrador menu = new Menu_administrador();
         menu.setSize(660, 460);
-        menu.setLocation(0,0);
+        menu.setLocation(0,0);*/
 
         login.removeAll();
-        login.add(menu,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
+        //login.add(menu,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
         login.revalidate();
         login.repaint();
         
-        //new Menu_admin().setVisible(true); //Admin version pestaña
+        new Menu_admin().setVisible(true); //Admin version pestaña
     }
     private void abrir_menu_vendedor(){
         Menu_vendedor menu = new Menu_vendedor();

@@ -9,15 +9,13 @@
             <Property name="text" type="java.lang.String" value="Personas"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="todas_menu">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Todas"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="usuarios_menu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Usuarios"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usuarios_menuActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="vendedores_menu">
               <Properties>
@@ -173,38 +171,37 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="3">
-                    <Column editable="false" title="Tipo" type="java.lang.Object">
-                      <Data value="Vendedor"/>
-                      <Data value="Usuario"/>
-                      <Data value="Desarrollador"/>
-                    </Column>
-                    <Column editable="false" title="Rut" type="java.lang.Object">
-                      <Data value="1"/>
-                      <Data value="2"/>
-                      <Data value="3"/>
-                    </Column>
-                    <Column editable="false" title="Nombre" type="java.lang.Object">
-                      <Data value="pepe"/>
-                      <Data value="alf"/>
-                      <Data value="adan"/>
-                    </Column>
-                    <Column editable="false" title="Direccion" type="java.lang.Object">
-                      <Data value="tu vieja"/>
-                      <Data value="tu hermana"/>
-                      <Data value="tu abuela"/>
-                    </Column>
-                    <Column editable="false" title="Correo" type="java.lang.Object">
-                      <Data value="a"/>
-                      <Data value="b"/>
-                      <Data value="c"/>
-                    </Column>
+                  <Table columnCount="4" rowCount="0">
+                    <Column editable="false" title="Rut" type="java.lang.Object"/>
+                    <Column editable="false" title="Nombre" type="java.lang.Object"/>
+                    <Column editable="false" title="Direccion" type="java.lang.Object"/>
+                    <Column editable="false" title="Correo" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton1"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="290" y="340" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton2"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="460" y="340" width="-1" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

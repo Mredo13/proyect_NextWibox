@@ -25,7 +25,7 @@ public class VideoJuego {
     }
 
     public VideoJuego(String codigo, String nombre, String version, Date fecha_de_desarrollo, String categoria, String genero, int precio, Desarrollador desarrollador) {
-        this.codigo = codigo;
+        this.codigo = "#"+codigo+"#";
         this.nombre = nombre;
         this.version = version;
         this.fecha_de_desarrollo = fecha_de_desarrollo;

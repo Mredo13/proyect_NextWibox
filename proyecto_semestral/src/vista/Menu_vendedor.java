@@ -5,6 +5,9 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,13 +15,19 @@ import java.awt.BorderLayout;
  */
 public class Menu_vendedor extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Menu
-     */
+    private DefaultTableModel model;
     public Menu_vendedor() {
         initComponents();
+        DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
+        model = tabla;
+        actualizar_tabla();
     }
-
+    private void actualizar_tabla (){
+        List <String[]> matriz = Visualizador.sistema.obtenerArriendos();
+        for(int i = 0;i<matriz.size();i++){
+            model.addRow(matriz.get(i));
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,15 +38,18 @@ public class Menu_vendedor extends javax.swing.JPanel {
     private void initComponents() {
 
         menu = new javax.swing.JPanel();
-        jPanel_ingresar = new javax.swing.JPanel();
-        ingresarArriendo_texto = new javax.swing.JLabel();
-        jPanel_actualizar = new javax.swing.JPanel();
-        actualizarArriendo_texto = new javax.swing.JLabel();
-        jPanel_eliminar = new javax.swing.JPanel();
-        eliminarArriendo_texto = new javax.swing.JLabel();
+        titulo_texto = new javax.swing.JLabel();
+        numArriendo_texto = new javax.swing.JLabel();
+        numArriendo_input = new javax.swing.JTextField();
+        numArriendo_separador = new javax.swing.JSeparator();
+        buscar_button = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        ingresar_button = new javax.swing.JButton();
+        modificar_button = new javax.swing.JButton();
+        actualizar_button = new javax.swing.JButton();
         jPanel_cerrar_sesion = new javax.swing.JPanel();
         cerrarSesion_texto = new javax.swing.JLabel();
-        titulo_texto = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(138, 25));
         setMinimumSize(new java.awt.Dimension(138, 25));
@@ -45,98 +57,78 @@ public class Menu_vendedor extends javax.swing.JPanel {
         menu.setBackground(new java.awt.Color(51, 51, 51));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel_ingresar.setBackground(new java.awt.Color(0, 153, 153));
+        titulo_texto.setBackground(new java.awt.Color(255, 255, 255));
+        titulo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        titulo_texto.setForeground(new java.awt.Color(255, 255, 255));
+        titulo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo_texto.setText("Menu Vendedor");
+        menu.add(titulo_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 200, -1));
 
-        ingresarArriendo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        ingresarArriendo_texto.setForeground(new java.awt.Color(255, 255, 255));
-        ingresarArriendo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ingresarArriendo_texto.setText("Ingresar Arriendo");
-        ingresarArriendo_texto.addMouseListener(new java.awt.event.MouseAdapter() {
+        numArriendo_texto.setBackground(new java.awt.Color(255, 255, 255));
+        numArriendo_texto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        numArriendo_texto.setForeground(new java.awt.Color(255, 255, 255));
+        numArriendo_texto.setText("Numero de arriendo:");
+        menu.add(numArriendo_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+
+        numArriendo_input.setBackground(new java.awt.Color(51, 51, 51));
+        numArriendo_input.setForeground(new java.awt.Color(102, 102, 102));
+        numArriendo_input.setBorder(null);
+        menu.add(numArriendo_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 270, 20));
+        menu.add(numArriendo_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 270, 10));
+
+        buscar_button.setText("Buscar");
+        buscar_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarArriendo_textoMouseClicked(evt);
+                buscar_buttonMouseClicked(evt);
             }
         });
+        menu.add(buscar_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
-        javax.swing.GroupLayout jPanel_ingresarLayout = new javax.swing.GroupLayout(jPanel_ingresar);
-        jPanel_ingresar.setLayout(jPanel_ingresarLayout);
-        jPanel_ingresarLayout.setHorizontalGroup(
-            jPanel_ingresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel_ingresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel_ingresarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ingresarArriendo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel_ingresarLayout.setVerticalGroup(
-            jPanel_ingresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(jPanel_ingresarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel_ingresarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ingresarArriendo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        menu.add(jPanel_ingresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 122, -1, -1));
+            },
+            new String [] {
+                "Numero De Arriendo", "Rut Usuario", "Codigo Videojuego", "Fecha Arriendo", "Fecha Entrega"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
-        jPanel_actualizar.setBackground(new java.awt.Color(0, 153, 153));
-
-        actualizarArriendo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        actualizarArriendo_texto.setForeground(new java.awt.Color(255, 255, 255));
-        actualizarArriendo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        actualizarArriendo_texto.setText("Actualizar Arriendo");
-        actualizarArriendo_texto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actualizarArriendo_textoMouseClicked(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jTable1.setShowGrid(false);
+        jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout jPanel_actualizarLayout = new javax.swing.GroupLayout(jPanel_actualizar);
-        jPanel_actualizar.setLayout(jPanel_actualizarLayout);
-        jPanel_actualizarLayout.setHorizontalGroup(
-            jPanel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_actualizarLayout.createSequentialGroup()
-                .addComponent(actualizarArriendo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel_actualizarLayout.setVerticalGroup(
-            jPanel_actualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_actualizarLayout.createSequentialGroup()
-                .addComponent(actualizarArriendo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        menu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 600, 180));
 
-        menu.add(jPanel_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 212, -1, -1));
-
-        jPanel_eliminar.setBackground(new java.awt.Color(0, 153, 153));
-
-        eliminarArriendo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        eliminarArriendo_texto.setForeground(new java.awt.Color(255, 255, 255));
-        eliminarArriendo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminarArriendo_texto.setText("Eliminar Arriendo");
-        eliminarArriendo_texto.addMouseListener(new java.awt.event.MouseAdapter() {
+        ingresar_button.setText("Ingresar");
+        ingresar_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarArriendo_textoMouseClicked(evt);
+                ingresar_buttonMouseClicked(evt);
             }
         });
+        menu.add(ingresar_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
 
-        javax.swing.GroupLayout jPanel_eliminarLayout = new javax.swing.GroupLayout(jPanel_eliminar);
-        jPanel_eliminar.setLayout(jPanel_eliminarLayout);
-        jPanel_eliminarLayout.setHorizontalGroup(
-            jPanel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_eliminarLayout.createSequentialGroup()
-                .addComponent(eliminarArriendo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel_eliminarLayout.setVerticalGroup(
-            jPanel_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_eliminarLayout.createSequentialGroup()
-                .addComponent(eliminarArriendo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        modificar_button.setText("Modificar");
+        modificar_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                modificar_buttonMouseClicked(evt);
+            }
+        });
+        menu.add(modificar_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
-        menu.add(jPanel_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 302, -1, -1));
+        actualizar_button.setText("Eliminar");
+        actualizar_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizar_buttonMouseClicked(evt);
+            }
+        });
+        menu.add(actualizar_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, -1, -1));
 
         jPanel_cerrar_sesion.setBackground(new java.awt.Color(204, 0, 0));
 
@@ -165,13 +157,6 @@ public class Menu_vendedor extends javax.swing.JPanel {
 
         menu.add(jPanel_cerrar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 392, 200, -1));
 
-        titulo_texto.setBackground(new java.awt.Color(255, 255, 255));
-        titulo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        titulo_texto.setForeground(new java.awt.Color(255, 255, 255));
-        titulo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_texto.setText("Menu Vendedor");
-        menu.add(titulo_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 56, 200, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,45 +173,6 @@ public class Menu_vendedor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ingresarArriendo_textoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarArriendo_textoMouseClicked
-        /*
-        IngresarArriendo ingresarArriendo = new IngresarArriendo();
-        ingresarArriendo.setSize(660, 460);
-        ingresarArriendo.setLocation(0,0);
-        
-        menu.removeAll();
-        menu.add(ingresarArriendo,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
-        menu.revalidate();
-        menu.repaint();
-        */
-    }//GEN-LAST:event_ingresarArriendo_textoMouseClicked
-
-    private void actualizarArriendo_textoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizarArriendo_textoMouseClicked
-        /*
-        ActualizarArriendo actualizarArriendo = new ActualizarArriendo();
-        actualizarArriendo.setSize(660, 460);
-        actualizarArriendo.setLocation(0,0);
-        
-        menu.removeAll();
-        menu.add(actualizarArriendo,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
-        menu.revalidate();
-        menu.repaint();
-        */
-    }//GEN-LAST:event_actualizarArriendo_textoMouseClicked
-
-    private void eliminarArriendo_textoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarArriendo_textoMouseClicked
-        /*
-        EliminarArriendo eliminarArriendo = new EliminarArriendo();
-        eliminarArriendo.setSize(660, 460);
-        eliminarArriendo.setLocation(0,0);
-        
-        menu.removeAll();
-        menu.add(eliminarArriendo,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
-        menu.revalidate();
-        menu.repaint();
-        */
-    }//GEN-LAST:event_eliminarArriendo_textoMouseClicked
-
     private void cerrarSesion_textoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarSesion_textoMouseClicked
         Login login = new Login();
         login.setSize(660, 460);
@@ -239,17 +185,89 @@ public class Menu_vendedor extends javax.swing.JPanel {
         
     }//GEN-LAST:event_cerrarSesion_textoMouseClicked
 
+    private void buscar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscar_buttonMouseClicked
+        String dato = numArriendo_input.getText();
+        if(!dato.isBlank()){
+            boolean encontrado=false;
+            for(int fila=0;fila<jTable1.getRowCount();fila++){
+                String tabla_dato =  model.getValueAt(fila, 1)+"";
+                if(dato.equals(tabla_dato)){
+                    jTable1.setRowSelectionInterval(fila,fila);
+                    encontrado=true;
+                    break;
+                }
+            }
+            if(!encontrado){
+                JOptionPane.showMessageDialog(null, "Rut - Codigo Inexistente", "Validación", 0);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese Rut - Codigo", "Validación", 2);
+        }
+
+    }//GEN-LAST:event_buscar_buttonMouseClicked
+
+    private void ingresar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresar_buttonMouseClicked
+        abrir_ingresar_arriendo();
+    }//GEN-LAST:event_ingresar_buttonMouseClicked
+
+    private void modificar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_modificar_buttonMouseClicked
+        int fila = jTable1.getSelectedRow();
+        if(fila != -1){
+            String num_arriendo = model.getValueAt(fila, 0)+"";
+            abrir_modificar_arriendo(num_arriendo);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un campo de la tabla", "Validación", 1);
+        }
+    }//GEN-LAST:event_modificar_buttonMouseClicked
+
+    private void actualizar_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizar_buttonMouseClicked
+        int fila = jTable1.getSelectedRow();
+        if(fila != -1){
+            String num_arriendo = model.getValueAt(fila, 0)+"";
+            Visualizador.sistema.eliminar_arriendo(num_arriendo);
+            model.removeRow(fila);
+            JOptionPane.showMessageDialog(null, "Arriendo eliminado", "Validación", 1);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un campo de la tabla", "Validación", 1);
+        }
+    }//GEN-LAST:event_actualizar_buttonMouseClicked
+    private void abrir_ingresar_arriendo(){
+        IngresarArriendo ingresarArriendo = new IngresarArriendo();
+        ingresarArriendo.setSize(660, 460);
+        ingresarArriendo.setLocation(0,0);
+        
+        menu.removeAll();
+        menu.add(ingresarArriendo,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
+        menu.revalidate();
+        menu.repaint();
+    }
+    private void abrir_modificar_arriendo(String num_arriendo){
+
+        ActualizarArriendo actualizarArriendo = new ActualizarArriendo(num_arriendo);
+        actualizarArriendo.setSize(660, 460);
+        actualizarArriendo.setLocation(0,0);
+
+        menu.removeAll();
+        menu.add(actualizarArriendo,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
+        menu.revalidate();
+        menu.repaint();
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel actualizarArriendo_texto;
+    private javax.swing.JButton actualizar_button;
+    private javax.swing.JButton buscar_button;
     private javax.swing.JLabel cerrarSesion_texto;
-    private javax.swing.JLabel eliminarArriendo_texto;
-    private javax.swing.JLabel ingresarArriendo_texto;
-    private javax.swing.JPanel jPanel_actualizar;
+    private javax.swing.JButton ingresar_button;
     private javax.swing.JPanel jPanel_cerrar_sesion;
-    private javax.swing.JPanel jPanel_eliminar;
-    private javax.swing.JPanel jPanel_ingresar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel menu;
+    private javax.swing.JButton modificar_button;
+    private javax.swing.JTextField numArriendo_input;
+    private javax.swing.JSeparator numArriendo_separador;
+    private javax.swing.JLabel numArriendo_texto;
     private javax.swing.JLabel titulo_texto;
     // End of variables declaration//GEN-END:variables
 }
