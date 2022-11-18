@@ -9,9 +9,16 @@ import bd.Conexion;
 import controlador.Sistema_impl;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import modelo.Arriendo;
+import modelo.Desarrollador;
+import modelo.Fecha;
+import modelo.Usuario;
+import modelo.Vendedor;
+import modelo.VideoJuego;
 
 /**
  *
@@ -34,12 +41,27 @@ public class Visualizador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Conectado a la base de datos", "Funcionamiento Aplicación", 1);
             base_de_datos.crear_tablas();
             //base_de_datos.borrar_tablas();
+            Fecha f = new Fecha();
+            Date date = null;
+            try{
+                date = f.verificarFecha("12-12-10");
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+            Usuario u = new Usuario("0", "0", "0", "0", date, "0", "0");
+            Vendedor v = new Vendedor("1", "1", "1", "1", "1");
+            Desarrollador d = new Desarrollador("2", "2", "2", "2", "2");
+            VideoJuego vi = new VideoJuego("3", "3", "3", date, "3", "3", 0, d);
+            Arriendo a = new Arriendo(0, vi, u, date, date);
+            
+            base_de_datos.agregar_usuario_BD(u);
+            base_de_datos.agregar_vendedor_BD(v);
+            
         }else{
             JOptionPane.showMessageDialog(null, "Modo sin conexión", "Funcionamiento Aplicación", 1);
             sistema.ingresarDatosPrueba();
             JOptionPane.showMessageDialog(null, sistema.como_entrar_menu_vendedor(), "Funcionamiento Aplicación", 1);
         }     
-        System.out.println(base_de_datos.isConected());
     }
     private void cargar_login(){
         Login login = new Login();

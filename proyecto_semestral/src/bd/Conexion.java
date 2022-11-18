@@ -39,6 +39,7 @@ public class Conexion {
 
             String borrar_usuario = "DROP TABLE usuario";
             String borrar_vendedor = "DROP TABLE vendedor";
+            
             PreparedStatement ps = connection.prepareStatement(borrar_usuario);
             ps.execute();
             System.out.println("Tabla usuario borrada");
@@ -60,7 +61,6 @@ public class Conexion {
         crear_tabla_videojuego();
         crear_tabla_arriendo();
     }
-    
     private void crear_tabla_usuario(){
         try{
             String SQL = "CREATE TABLE usuario(rut VARCHAR(12) PRIMARY KEY,nombre VARCHAR(60) NOT NULL,direccion VARCHAR(45) NOT NULL,";
@@ -94,6 +94,7 @@ public class Conexion {
     private void crear_tabla_arriendo(){
         
     }
+    
     public boolean agregar_usuario_BD(Usuario usuario){
         try {
         String SQL = "INSERT INTO usuario (rut, nombre, direccion, correo, fecha_de_nacimiento, comuna, telefono) VALUES (?,?,?,?,?,?,?)";
@@ -132,7 +133,7 @@ public class Conexion {
         ps.executeUpdate();
         
         ps.close();
-            System.out.println("Agregado a la base de datos");
+            System.out.println("Vendedor agregado a la base de datos");
         } catch (Exception e) {
             System.out.println("Error al agregar vendedor en la base de datos\n"+e.getMessage());
         }
