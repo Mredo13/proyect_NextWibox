@@ -4,14 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class VideoJuego {
-    private String codigo;
-    private String nombre;
+    private String codigo;//
+    private String nombre;//
     private String version;    
     private Date fecha_de_desarrollo;
     private String categoria;
     private String genero;
-    private int precio;
-    private Desarrollador desarrollador;
+    private int precio;//
+    private Desarrollador desarrollador;//
 
     public VideoJuego() {
         this.codigo = "";

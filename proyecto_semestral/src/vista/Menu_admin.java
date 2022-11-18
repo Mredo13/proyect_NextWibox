@@ -5,6 +5,7 @@
 package vista;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,13 +15,39 @@ import javax.swing.table.DefaultTableModel;
 public class Menu_admin extends javax.swing.JFrame {
 
     private DefaultTableModel model;
+    private boolean logo = true;
     public Menu_admin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jPanel1.setVisible(false);
+        /*
+        rut_input.setVisible(false);
+        rut_separador.setVisible(false);
+        buscar_botton.setVisible(false);
+        jScrollPane1.setVisible(false);
+        jPanel1.setVisible(false);
+        */
         DefaultTableModel tabla = (DefaultTableModel) jTable1.getModel();
         model = tabla;
     }
-
+    private void eliminar_datos_tabla(){
+        for(int i = jTable1.getRowCount()-1;i>=0;i--){
+            model.removeRow(i);
+        }
+    }
+    private void mostrarInfo(){
+        if(logo){
+            jPanel1.setVisible(true);
+            /*
+            rut_input.setVisible(true);
+            rut_separador.setVisible(true);
+            buscar_botton.setVisible(true);
+            jScrollPane1.setVisible(true);
+            jPanel1.setVisible(true);
+            */
+            logo = false;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,49 +58,50 @@ public class Menu_admin extends javax.swing.JFrame {
     private void initComponents() {
 
         menu = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         titulo_texto = new javax.swing.JLabel();
-        rut_texto = new javax.swing.JLabel();
+        identificador_texto = new javax.swing.JLabel();
         rut_input = new javax.swing.JTextField();
         rut_separador = new javax.swing.JSeparator();
         buscar_botton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ingresar_botton = new javax.swing.JButton();
+        modificar_botton = new javax.swing.JButton();
+        eliminar_botton = new javax.swing.JButton();
         barraTareas_menu = new javax.swing.JMenuBar();
         personas_menu = new javax.swing.JMenu();
         usuarios_menu = new javax.swing.JMenuItem();
         vendedores_menu = new javax.swing.JMenuItem();
         desarrolladores_menu = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         videojuegos_menu = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Manu Admin");
+        setUndecorated(true);
         setResizable(false);
 
         menu.setBackground(new java.awt.Color(51, 51, 51));
         menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+
         titulo_texto.setBackground(new java.awt.Color(255, 255, 255));
         titulo_texto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titulo_texto.setForeground(new java.awt.Color(255, 255, 255));
         titulo_texto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo_texto.setText("Menu Administrador");
-        menu.add(titulo_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 200, -1));
 
-        rut_texto.setBackground(new java.awt.Color(255, 255, 255));
-        rut_texto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        rut_texto.setForeground(new java.awt.Color(255, 255, 255));
-        rut_texto.setText("Rut:");
-        menu.add(rut_texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+        identificador_texto.setBackground(new java.awt.Color(255, 255, 255));
+        identificador_texto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        identificador_texto.setForeground(new java.awt.Color(255, 255, 255));
 
         rut_input.setBackground(new java.awt.Color(51, 51, 51));
         rut_input.setForeground(new java.awt.Color(102, 102, 102));
         rut_input.setBorder(null);
-        menu.add(rut_input, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 270, 20));
-        menu.add(rut_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 270, 10));
 
         buscar_botton.setText("Buscar");
-        menu.add(buscar_botton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,15 +121,77 @@ public class Menu_admin extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        menu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, 180));
+        ingresar_botton.setText("Ingresar");
 
-        jButton1.setText("jButton1");
-        menu.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, -1, -1));
+        modificar_botton.setText("Modificar");
 
-        jButton2.setText("jButton2");
-        menu.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
+        eliminar_botton.setText("Eliminar");
+        eliminar_botton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminar_bottonMouseClicked(evt);
+            }
+        });
 
-        personas_menu.setText("Personas");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(100, 100, 100)
+                            .addComponent(titulo_texto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(identificador_texto))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rut_input, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rut_separador, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(20, 20, 20)
+                            .addComponent(buscar_botton))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(ingresar_botton)
+                            .addGap(118, 118, 118)
+                            .addComponent(modificar_botton)
+                            .addGap(89, 89, 89)
+                            .addComponent(eliminar_botton)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(titulo_texto)
+                    .addGap(30, 30, 30)
+                    .addComponent(identificador_texto)
+                    .addGap(20, 20, 20)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(rut_input, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(rut_separador, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(buscar_botton))
+                    .addGap(20, 20, 20)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(30, 30, 30)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ingresar_botton)
+                        .addComponent(modificar_botton)
+                        .addComponent(eliminar_botton))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        menu.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 490, 420));
+
+        personas_menu.setText("Registros");
 
         usuarios_menu.setText("Usuarios");
         usuarios_menu.addActionListener(new java.awt.event.ActionListener() {
@@ -112,15 +202,46 @@ public class Menu_admin extends javax.swing.JFrame {
         personas_menu.add(usuarios_menu);
 
         vendedores_menu.setText("Vendedor");
+        vendedores_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendedores_menuActionPerformed(evt);
+            }
+        });
         personas_menu.add(vendedores_menu);
 
         desarrolladores_menu.setText("Desarrolladores");
+        desarrolladores_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desarrolladores_menuActionPerformed(evt);
+            }
+        });
         personas_menu.add(desarrolladores_menu);
+
+        jMenuItem1.setText("Videojuegos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        personas_menu.add(jMenuItem1);
 
         barraTareas_menu.add(personas_menu);
 
-        videojuegos_menu.setText("Videojuegos");
+        videojuegos_menu.setText("Ayuda");
+        videojuegos_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                videojuegos_menuMouseClicked(evt);
+            }
+        });
         barraTareas_menu.add(videojuegos_menu);
+
+        jMenu1.setText("Salir");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        barraTareas_menu.add(jMenu1);
 
         setJMenuBar(barraTareas_menu);
 
@@ -139,27 +260,117 @@ public class Menu_admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void usuarios_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarios_menuActionPerformed
+        titulo_texto.setText("Menu Usuario");
+        mostrarInfo();
+        identificador_texto.setText("Rut");
+        jTable1.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("Rut");
+        jTable1.getTableHeader().getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        jTable1.getTableHeader().getColumnModel().getColumn(2).setHeaderValue("Direccion");
+        jTable1.getTableHeader().getColumnModel().getColumn(3).setHeaderValue("Correo");
+        eliminar_datos_tabla();
         List <String[]> matriz = Visualizador.sistema.obtenerUsuarios();
         for(int i = 0;i<matriz.size();i++){
             model.addRow(matriz.get(i));
         }
     }//GEN-LAST:event_usuarios_menuActionPerformed
-    
- 
 
+    private void vendedores_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedores_menuActionPerformed
+        titulo_texto.setText("Menu Vendedor");
+        mostrarInfo();
+        identificador_texto.setText("Rut");
+        jTable1.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("Rut");
+        jTable1.getTableHeader().getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        jTable1.getTableHeader().getColumnModel().getColumn(2).setHeaderValue("Direccion");
+        jTable1.getTableHeader().getColumnModel().getColumn(3).setHeaderValue("Correo");
+        eliminar_datos_tabla();
+        List <String[]> matriz = Visualizador.sistema.obtenerVendedores();
+        for(int i = 0;i<matriz.size();i++){
+            model.addRow(matriz.get(i));
+        }
+    }//GEN-LAST:event_vendedores_menuActionPerformed
+
+    private void desarrolladores_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desarrolladores_menuActionPerformed
+        titulo_texto.setText("Menu Desarrollador");
+        mostrarInfo();
+        identificador_texto.setText("Rut");
+        jTable1.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("Rut");
+        jTable1.getTableHeader().getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        jTable1.getTableHeader().getColumnModel().getColumn(2).setHeaderValue("Direccion");
+        jTable1.getTableHeader().getColumnModel().getColumn(3).setHeaderValue("Correo");
+        eliminar_datos_tabla();
+        List <String[]> matriz = Visualizador.sistema.obtenerDesarrollador();
+        for(int i = 0;i<matriz.size();i++){
+            model.addRow(matriz.get(i));
+        }
+    }//GEN-LAST:event_desarrolladores_menuActionPerformed
+
+    private void videojuegos_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videojuegos_menuMouseClicked
+
+    }//GEN-LAST:event_videojuegos_menuMouseClicked
+
+    private void eliminar_bottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminar_bottonMouseClicked
+        int fila = jTable1.getSelectedRow();
+        String titulo = titulo_texto.getText().replaceAll("Menu ", "");
+        System.out.println(titulo);
+        if(fila != -1){
+            if(titulo.equalsIgnoreCase("usuario")){
+                    Visualizador.sistema.eliminar_usuario("");      
+            }else if(titulo.equalsIgnoreCase("vendedor")){
+                    Visualizador.sistema.eliminar_vendedor("");          
+            }else if(titulo.equalsIgnoreCase("desarrollador")){
+                    Visualizador.sistema.eliminar_desarrollador("");
+            }else{
+                    Visualizador.sistema.eliminar_videojuego("");
+            }
+            model.removeRow(fila);
+            JOptionPane.showMessageDialog(null, titulo+" eliminado", "Validación", 1);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un campo de la tabla", "Validación", 1);
+        }
+    }//GEN-LAST:event_eliminar_bottonMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        titulo_texto.setText("Menu Videojuego");
+        mostrarInfo();
+        identificador_texto.setText("Codigo");
+        jTable1.getTableHeader().getColumnModel().getColumn(0).setHeaderValue("Codigo");
+        jTable1.getTableHeader().getColumnModel().getColumn(1).setHeaderValue("Nombre");
+        jTable1.getTableHeader().getColumnModel().getColumn(2).setHeaderValue("Precio");
+        jTable1.getTableHeader().getColumnModel().getColumn(3).setHeaderValue("Rut desarrollador");
+        eliminar_datos_tabla();
+        //String titl = jTable1.getTableHeader().getColumnModel().getColumn(0).getHeaderValue().toString();
+        //Headers
+        
+        
+        System.out.println();
+        List <String[]> matriz = Visualizador.sistema.obtenerVideojuego();
+        for(int i = 0;i<matriz.size();i++){
+            model.addRow(matriz.get(i));
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        //new Visualizador().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1MouseClicked
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barraTareas_menu;
     private javax.swing.JButton buscar_botton;
     private javax.swing.JMenuItem desarrolladores_menu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton eliminar_botton;
+    private javax.swing.JLabel identificador_texto;
+    private javax.swing.JButton ingresar_botton;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel menu;
+    private javax.swing.JButton modificar_botton;
     private javax.swing.JMenu personas_menu;
     private javax.swing.JTextField rut_input;
     private javax.swing.JSeparator rut_separador;
-    private javax.swing.JLabel rut_texto;
     private javax.swing.JLabel titulo_texto;
     private javax.swing.JMenuItem usuarios_menu;
     private javax.swing.JMenuItem vendedores_menu;

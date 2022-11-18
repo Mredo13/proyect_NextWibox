@@ -123,10 +123,10 @@ public class Login extends javax.swing.JPanel {
         menu.setSize(660, 460);
         menu.setLocation(0,0);*/
 
-        login.removeAll();
+        //login.removeAll();
         //login.add(menu,new org.netbeans.lib.awtextra.AbsoluteConstraints(0,0,-1,-1));
-        login.revalidate();
-        login.repaint();
+        //login.revalidate();
+        //login.repaint();
         
         new Menu_admin().setVisible(true); //Admin version pestaña
     }
@@ -143,8 +143,9 @@ public class Login extends javax.swing.JPanel {
     private void acceder_botonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceder_botonMouseClicked
         String usuario = usuario_input.getText();
         String contraseña = contraseña_input.getText();
-        if(usuario.equals("adm") && contraseña.equals("admin")){
+        if(usuario.equals("a") && contraseña.equals("a")){
             abrir_menu_admin();
+            
         }else{
             if(usuario.isBlank()){
                 JOptionPane.showMessageDialog(null,"Ingrese un usuario");

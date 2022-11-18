@@ -63,7 +63,7 @@ public class Visualizador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, sistema.como_entrar_menu_vendedor(), "Funcionamiento Aplicación", 1);
         }     
     }
-    private void cargar_login(){
+    public void cargar_login(){
         Login login = new Login();
         login.setSize(660, 460);
         login.setLocation(0,0);

@@ -246,6 +246,49 @@ public class Sistema_impl {
         }
         return matriz;
     }
+    public List<String []> obtenerVendedores(){
+        List<String[]> matriz = new ArrayList<>();
+        for(int i=0;i<lVendedor.size();i++){
+            Vendedor p = lVendedor.get(i);             
+            String [] datos = new String[4];
+            
+            datos[0] = p.getRut();
+            datos[1] = p.getNombre();
+            datos[2] = p.getDireccion();
+            datos[3] = p.getCorreo();
+            matriz.add(datos); 
+        }
+        return matriz;
+    }
+    public List<String []> obtenerDesarrollador(){
+        List<String[]> matriz = new ArrayList<>();
+        for(int i=0;i<lDesarrollador.size();i++){
+            Desarrollador p = lDesarrollador.get(i);             
+            String [] datos = new String[4];
+            
+            datos[0] = p.getRut();
+            datos[1] = p.getNombre();
+            datos[2] = p.getDireccion();
+            datos[3] = p.getCorreo();
+            matriz.add(datos); 
+        }
+        return matriz;
+    }
+    public List<String []> obtenerVideojuego(){
+        List<String[]> matriz = new ArrayList<>();
+        SimpleDateFormat form = new SimpleDateFormat("dd-MM-yy");
+        for(int i=0;i<lVideojugo.size();i++){
+            VideoJuego v = lVideojugo.get(i);             
+            String [] datos = new String[4];
+            
+            datos[0] = v.getCodigo();
+            datos[1] = v.getNombre();
+            datos[2] = v.getPrecio()+"";
+            datos[3] = v.getDesarrollador().getRut();
+            matriz.add(datos); 
+        }
+        return matriz;
+    }
     public List<String []> obtenerArriendos(){
         List<String[]> matriz = new ArrayList<>();
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yy");

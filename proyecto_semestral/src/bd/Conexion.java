@@ -60,7 +60,13 @@ public class Conexion {
         crear_tabla_desarrollador();
         crear_tabla_videojuego();
         crear_tabla_arriendo();
+        
+        fk_videojuego_desarrollador();
+        fk_arriendo_videojuego();
+        fk_arriendo_usuario();
+        
     }
+
     private void crear_tabla_usuario(){
         try{
             String SQL = "CREATE TABLE usuario(rut VARCHAR(12) PRIMARY KEY,nombre VARCHAR(60) NOT NULL,direccion VARCHAR(45) NOT NULL,";
@@ -86,13 +92,74 @@ public class Conexion {
         }
     }
     private void crear_tabla_desarrollador(){
+        try{
+            String SQL = "CREATE TABLE desarrollador(rut VARCHAR(12) PRIMARY KEY,nombre VARCHAR(60) NOT NULL,direccion VARCHAR(45) NOT NULL,correo VARCHAR(45) NOT NULL,";
+            SQL+="fono VARCHAR(20) NOT NULL,UNIQUE(correo))";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.execute();
+            System.out.println("Tabla desarrollador creada");
+        }catch(Exception e){
+           System.out.println("Error al crear la tabla desarrollador, o ya existia"); 
+        }
         
     }
     private void crear_tabla_videojuego(){
+        try{
+            String SQL = "CREATE TABLE videojuego(codigo VARCHAR(12) PRIMARY KEY,nombre VARCHAR(60) NOT NULL,version VARCHAR(45) NOT NULL,fecha_de_desarrollo DATE NOT NULL,";
+            SQL+="categoria VARCHAR(20) NOT NULL, genero VARCHAR(20) NOT NULL, precio INT(20) NOT NULL, rut VARCHAR (12)";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.execute();
+            System.out.println("Tabla videojuego creada");
+        }catch(Exception e){
+           System.out.println("Error al crear la tabla videojuego, o ya existia"); 
+        }
         
     }
     private void crear_tabla_arriendo(){
+        try{
+            String SQL = "CREATE TABLE arriendo(numero_de_arriendo INT(12) PRIMARY KEY,fecha_arriendo DATE NOT NULL, fecha_entrega DATE NOT NULL,";
+            SQL+="codigo VARCHAR(12) NOT NULL, rut VARCHAR(12) NOT NULL";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.execute();
+            System.out.println("Tabla arriendo creada");
+        }catch(Exception e){
+           System.out.println("Error al crear la tabla arriendo, o ya existia"); 
+        }
         
+    }
+    
+        public void fk_videojuego_desarrollador(){
+        try{
+            String SQL = "ALTER TABLE videojuego ADD CONSTRAINT fk_videojuego_desarrollador FOREIGN KEY (rut)REFERENCES desarrollador (rut)";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.execute();
+            System.out.println("fk creada");
+            ps.close();
+        }catch(Exception e){
+           System.out.println("Error al ingresar fk, o ya existia"); 
+        }
+    }
+    public void fk_arriendo_usuario(){
+        try{
+            String SQL = "ALTER TABLE arriendo ADD CONSTRAINT fk_arriendo_usuario FOREIGN KEY (rut) REFERENCES usuario (rut)";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.execute();
+            System.out.println("fk creada");
+            ps.close();
+        }catch(Exception e){
+           System.out.println("Error al ingresar fk, o ya existia"); 
+        }
+    }
+    public void fk_arriendo_videojuego(){
+        try{
+            String SQL = "ALTER TABLE arriendo ADD CONSTRAINT fk_arriendo_videojuego FOREIGN KEY (codigo) REFERENCES videojuego (codigo)";
+            PreparedStatement ps = connection.prepareStatement(SQL);
+            ps.execute();
+            System.out.println("fk creada");
+            ps.close();
+        }catch(Exception e){
+           System.out.println("Error al ingresar fk, o ya existia"); 
+        }
     }
     
     public boolean agregar_usuario_BD(Usuario usuario){
