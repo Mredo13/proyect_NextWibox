@@ -10,6 +10,7 @@ import controlador.Sistema_impl;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -22,23 +23,24 @@ public class Visualizador extends javax.swing.JFrame {
      * Creates new form Visualizador1
      */
     public static Sistema_impl sistema = new Sistema_impl();
-    Conexion base_de_datos = new Conexion();
+    public static Conexion base_de_datos = new Conexion();
     public Visualizador() {
         initComponents();
         this.setLocationRelativeTo(null);//hace que la pestaña se vea al centro
         
-        cargarLogin();
+        cargar_login();
         base_de_datos.conectar();
         if(base_de_datos.isConected()){
-            System.out.println("Conectado a la base de datos");
-            //base_de_datos.crear_tablas();
-            //base_de_datos.borrar_tablas();
-            
+            JOptionPane.showMessageDialog(null, "Conectado a la base de datos", "Funcionamiento Aplicación", 1);
+            base_de_datos.crear_tablas();
+            base_de_datos.borrar_tablas();
         }else{
-            System.out.println("Modo sin conexion a la base de datos");
+            JOptionPane.showMessageDialog(null, "Modo sin conexión", "Funcionamiento Aplicación", 1);
+            sistema.ingresarDatosPrueba();
+            JOptionPane.showMessageDialog(null, sistema.como_entrar_menu_vendedor(), "Funcionamiento Aplicación", 1);
         }     
     }
-    private void cargarLogin(){
+    private void cargar_login(){
         Login login = new Login();
         login.setSize(660, 460);
         login.setLocation(0,0);

@@ -10,7 +10,7 @@ public class Desarrollador extends Persona {
         this.fono = "";
     }
 
-    public Desarrollador(String fono, String rut, String nombre, String direccion, String correo) {
+    public Desarrollador(String rut, String nombre, String direccion, String correo, String fono) {
         super(rut, nombre, direccion, correo);
         this.fono = fono;
     }

@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class VideoJuego {
-    private int codigo;
+    private String codigo;
     private String nombre;
     private String version;    
     private Date fecha_de_desarrollo;
@@ -14,7 +14,7 @@ public class VideoJuego {
     private Desarrollador desarrollador;
 
     public VideoJuego() {
-        this.codigo = 0;
+        this.codigo = "";
         this.nombre = "";
         this.version = "";
         this.fecha_de_desarrollo = null;
@@ -24,7 +24,7 @@ public class VideoJuego {
         this.desarrollador = null;
     }
 
-    public VideoJuego(int codigo, String nombre, String version, Date fecha_de_desarrollo, String categoria, String genero, int precio, Desarrollador desarrollador) {
+    public VideoJuego(String codigo, String nombre, String version, Date fecha_de_desarrollo, String categoria, String genero, int precio, Desarrollador desarrollador) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.version = version;
@@ -43,11 +43,11 @@ public class VideoJuego {
         this.desarrollador = desarrollador;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
